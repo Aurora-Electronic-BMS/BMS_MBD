@@ -23,6 +23,8 @@ Simulink/Stateflow 为建模工具，对 `BMS_V1.0` 参考实现中的 `ts_sm_up
 
 ![状态机](docs/bms_state_machine.png)
 
+<div align="center"><sub>图 1　状态转移示意</sub></div>
+
 ---
 
 ## 2. 系统架构
@@ -47,6 +49,12 @@ flowchart LR
 | `ts_sm_update` | 状态机主体（Stateflow） | `ts_sm_update()` |
 | `ts_sm_handle_bms_in` | 由启动请求与充电请求计算目标状态 | `ts_sm_handle_bms_in()` |
 | `ts_sm_set_error_source` | 故障源与状态机故障的合并 | `ts_sm_set_error_source()` |
+
+图 2 为模型顶层结构（含测试用的 Dashboard 控件与观测模块）。
+
+![模型顶层结构](docs/fig_model.png)
+
+<div align="center"><sub>图 2　模型顶层结构</sub></div>
 
 ---
 
@@ -82,6 +90,12 @@ flowchart LR
 | 任意状态 | ERROR | `mon_flags != 0` |
 
 故障为锁存型：故障消失不自动清除，须由 `clear_errors` 指令复位。
+
+图 3 为上述状态与迁移条件的 Stateflow 实现。
+
+![状态机实现](docs/fig_chart.png)
+
+<div align="center"><sub>图 3　Stateflow 状态机实现</sub></div>
 
 ---
 
